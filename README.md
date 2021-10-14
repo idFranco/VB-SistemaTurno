@@ -25,7 +25,7 @@ Secciones:
 ## Desarrollo del sistema
 * **Aplicación**
   * Visual Studio 2019
-  * VB.NET
+  * VB.NET Windows Forms
   * SQLite
   * .NET Framework 4.7.2
   
