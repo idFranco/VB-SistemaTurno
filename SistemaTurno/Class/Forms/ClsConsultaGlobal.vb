@@ -1,12 +1,12 @@
 ﻿Public Class ClsConsultaGlobal
 
-    Private ReadOnly Obj As New DataAccess.ListaHorario
-    Private ReadOnly ClsDA As New ClsDataAccess(Obj)
+    Private ReadOnly ClsDA As ClsDataAccess
 
     Private ReadOnly Frm As BusquedaGlobal
 
-    Public Sub New(ByVal Frm As BusquedaGlobal)
+    Public Sub New(ByVal Frm As BusquedaGlobal, ByVal ClsDA As ClsDataAccess)
         Me.Frm = Frm
+        Me.ClsDA = ClsDA
     End Sub
 
 

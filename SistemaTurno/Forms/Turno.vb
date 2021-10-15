@@ -1,18 +1,20 @@
 ﻿Public Class Turno
 
     Private ReadOnly ClsTur As ClsTurno
+    Private ReadOnly clsG As ClassGeneral
 
     Private Data As List(Of DataAccess.Turno)
     Private OldDate As List(Of DataAccess.HoraFecha)
     Private NewDate As List(Of DataAccess.HoraFecha)
 
-    Public Sub New(ByVal ClsDA As ClsDataAccess, ByVal ModObj As DataAccess.ListaHorario)
+    Public Sub New(ByVal ClsDA As ClsDataAccess, ByVal ModObj As DataAccess.ListaHorario, ByVal clsG As ClassGeneral)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        ClsTur = New ClsTurno(Me, ClsDA, ModObj)
+        Me.clsG = clsG
+        ClsTur = New ClsTurno(Me, ClsDA, ModObj, clsG)
     End Sub
 
 
@@ -79,18 +81,12 @@
 
 
     Private Sub Bot_cerrar_Click(sender As Object, e As EventArgs) Handles Bot_cerrar.Click
-        Me.Hide()
-        Me.Close()
+        UnLoadForm()
     End Sub
 
     Private Sub LoadError(ByVal cError As String)
 
-        If Not IsNothing(cError) And Not cError = "" Then
-            MessageBox.Show(cError)
-            Me.Close()
-            Me.Hide()
-            Return
-        End If
+        If clsG.LoadError(cError) Then UnLoadForm()
 
     End Sub
 
@@ -98,6 +94,11 @@
         Data = Nothing
         OldDate = Nothing
         NewDate = Nothing
+    End Sub
+
+    Private Sub UnLoadForm()
+        Me.Hide()
+        Me.Close()
     End Sub
 
 End Class

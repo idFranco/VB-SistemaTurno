@@ -1,17 +1,19 @@
 ﻿Public Class BusquedaGlobal
 
-    Private ReadOnly ClsCG As New ClsConsultaGlobal(Me)
+    Private ReadOnly ClsCG As ClsConsultaGlobal
+
     Private ReadOnly FRM As Form
     Private DNISelect As String
     Private cError As String
 
-    Public Sub New(ByVal frm As Form)
+    Public Sub New(ByVal frm As Form, ByVal ClsDA As ClsDataAccess)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.FRM = frm
+        Me.ClsCG = New ClsConsultaGlobal(Me, ClsDA)
     End Sub
 
     Private Sub BusquedaGlobal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -109,6 +111,7 @@
         Bot_Cargar.Enabled = False
         Bot_Cargar.BackColor = Color.White
     End Sub
+
     Private Sub Cerrar()
 
         If FRM.Text = "Paciente" Then

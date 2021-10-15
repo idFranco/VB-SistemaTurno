@@ -1,21 +1,17 @@
 ﻿Imports DataAccess
 
-Public Class ClsDataAccess : Inherits DataBase
+Public Class ClsDataAccess
 
-    Private ReadOnly Obj As ListaHorario
     Private ReadOnly ConnDB As New Conexion_DB
-    Private ReadOnly Path = Application.StartupPath & "\Data\"
     Private cError As String
 
-    Public Sub New(ByVal obj As ListaHorario)
-        Me.Obj = obj
-    End Sub
 
     Public Function CreateDataBase() As String
-        Return CreateDB(Path, cError)
+        Dim DB As New DataBase()
+        Return DB.CreateDB(Application.StartupPath & "\Data\", cError)
     End Function
 
-    Public Function LoadHorario() As String
+    Public Function LoadHorario(ByRef Obj As ListaHorario) As String
         Return ConnDB.GetHorario(Obj)
     End Function
 
@@ -52,13 +48,12 @@ Public Class ClsDataAccess : Inherits DataBase
     '**************************** UpDate ****************************'
 
     Public Function UpdateDataPaciente(ByVal Persona As List(Of Persona), ByVal DNI_anterior As String) As String
-        Return ConnDB.UpDateDataPerson(Persona, DNI_anterior)
+        Return ConnDB.UpdateDataPerson(Persona, DNI_anterior)
     End Function
 
     Public Function UpdateDate(ByVal Data As List(Of DataAccess.Turno), ByVal OldDate As List(Of HoraFecha), ByVal NewDate As List(Of HoraFecha)) As String
         Return ConnDB.UpdateDate(Data, OldDate, NewDate)
     End Function
-
 
     '**************************** Delete ****************************'
 

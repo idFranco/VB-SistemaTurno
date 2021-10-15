@@ -1,17 +1,18 @@
 ﻿Public Class Principal
 
-    Private ReadOnly Obj As New DataAccess.ListaHorario
+    Private ReadOnly Obj As DataAccess.ListaHorario
     Private ReadOnly ClsDA As ClsDataAccess
+    Private ReadOnly clsG As ClassGeneral
 
-    Public Sub New(ByVal ClsDA As ClsDataAccess, ByVal Obj As DataAccess.ListaHorario)
+    Public Sub New(ByVal ClsDA As ClsDataAccess, ByVal Obj As DataAccess.ListaHorario, ByVal clsG As ClassGeneral)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
         Me.Obj = Obj
         Me.ClsDA = ClsDA
+        Me.clsG = clsG
 
     End Sub
 
@@ -47,7 +48,7 @@
             Me.ActiveMdiChild.Hide()
         End If
 
-        Dim PAC As New Paciente(ClsDA) With {
+        Dim PAC As New Paciente(ClsDA, clsG) With {
             .MdiParent = Me
         }
         PAC.Show()
@@ -62,7 +63,7 @@
             Me.ActiveMdiChild.Hide()
         End If
 
-        Dim TUR As New Turno(ClsDA, Obj) With {
+        Dim TUR As New Turno(ClsDA, Obj, clsG) With {
             .MdiParent = Me
         }
         TUR.Show()

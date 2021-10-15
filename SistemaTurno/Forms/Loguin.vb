@@ -1,22 +1,25 @@
 ﻿Public Class Loguin
 
     Private ReadOnly Obj As New DataAccess.ListaHorario
-    Private ReadOnly ClsLoguin As New ClsDataAccess(Obj)
+    Private ReadOnly ClsDA As New ClsDataAccess()
+    Private ReadOnly clsG As New ClassGeneral
 
     Private Sub Loguin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        LoadError(ClsLoguin.CreateDataBase())
+        LoadError(ClsDA.CreateDataBase())
 
     End Sub
 
     Private Sub Bot_aceptar_Click(sender As Object, e As EventArgs) Handles Bot_aceptar.Click
 
         Dim Check As Boolean = False
-        LoadError(ClsLoguin.CheckUserPass(Usuario.Text, Contraseña.Text, Check))
+        LoadError(ClsDA.CheckUserPass(Usuario.Text, Contraseña.Text, Check))
 
         If Check Then
-            LoadError(ClsLoguin.LoadHorario)
-            Dim mdiPrincipal As New Principal(ClsLoguin, Obj)
+
+            LoadError(ClsDA.LoadHorario(Obj))
+
+            Dim mdiPrincipal As New Principal(ClsDA, Obj, clsG)
             Me.Visible = False
             mdiPrincipal.ShowDialog()
             UnLoadForm()
@@ -34,12 +37,7 @@
 
     Private Sub LoadError(ByVal cError As String)
 
-        If Not IsNothing(cError) And Not cError = "" Then
-            MessageBox.Show(cError)
-            Me.Close()
-            Me.Hide()
-            Return
-        End If
+        If clsG.LoadError(cError) Then UnLoadForm()
 
     End Sub
 

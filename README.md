@@ -1,23 +1,25 @@
 # Sistema Turno
 
-Permite la gestión de turno de personas que fueron registradas, como los que no se cuenta con información al respecto.
+Permite la gestión de turno de personas. Tanto de las que se encuentran registradas, como así también, de las que no se cuenta con información al respecto.
 
 Secciones:
 * **Loguin**
-	* Permite el logueo del usuario. cuya información a brindar es: Usuario:admin - Contraseña:1234.
+	* Permite el logueo del usuario. Cuya información a brindar es: Usuario: admin - Contraseña: 1234.
 	
 * **Paciente**
-	* Realiza el **alta** y **modificación** de los datos de una persona. Se realizar la búsqueda por medio de su número de documento en el campo con el mismo nombre, o ingresando a la Sección Busqueda Global.
+	* Realiza el **alta** y **modificación** de los datos de una persona. 
+	* Permite realizar la búsqueda de los datos de un paciente por medio de su número de documento en el campo con el mismo nombre, o ingresando a la Sección Busqueda Global.
 	* Limpieza de los campos que contienen información.
 	
 * **Turno**
-	* Se puede realizar la búsqueda de los datos por medio de su número de documento en el campo con el mismo nombre, o ingresando a la Sección Busqueda Global.
-	* Selección de una fecha y hora a ser asignado.
 	* Realiza eventos de **alta**, **modificación** y **baja** de un turno determinado.
+	* Permite realizar la búsqueda de los datos de un paciente por medio de su número de documento en el campo con el mismo nombre, o ingresando a la Sección Busqueda Global.
+	* Selección de una fecha y hora a ser asignado.
+	* Si no se seleccionó los datos de ningún paciente, solo realice la acción de seleccionar fecha, hora y presionar el botón Asignar Turno. Seguidamente, le permitirá el ingreso del nombre del paciente para asignar dicho turno. 
 
 * **Busqueda Global**
-	* Muestra un listado con número de documento y nombre completo de las personas que fueron cargado en el sistema. 
-    * Filtrado de datos por medio del Nombre o Apellido. 
+	* Muestra un listado completo que contiene Número de Documento y Nombre Completo de las personas que fueron registradas en el sistema. 
+    * Filtrado de datos por medio de Nombre o Apellido. 
     * El listado acepta el evento click y doble click **sobre el nombre de la persona** para la carga de los datos en el Formulario Principal.
 
 ## Archivo .dll
@@ -38,7 +40,4 @@ Secciones:
   
 ## Acerca de
 
-El mismo fue desarrollado con la finalidad de brindar información sobre la programación en VB.NET. Se dejó varias cuestiones que mejorarían el rendimiento de la app y de lo cual me encuentro disponible a conversar sobre las mismas.
-
-## Contacto Autor
-https://www.linkedin.com/in/maldonado-franco-rodolfo/
+El mismo fue desarrollado con la finalidad educativa sobre la programación en VB.NET. Se dejó varias cuestiones que mejorarían el rendimiento de la app y de lo cual me encuentro disponible a conversar sobre las mismas.

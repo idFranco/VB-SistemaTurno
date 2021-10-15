@@ -150,7 +150,7 @@ Public Class Conexion_DB
 
 
     ''' <summary>
-    ''' Obtine los datos personales de un paciente
+    ''' Obtiene los datos personales de un paciente
     ''' </summary>
     Public Function GetDataPerson(ByVal DNI As String,
                                   ByRef LPersona As List(Of Persona),
@@ -194,7 +194,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el nombre completo de un paciente
+    ''' Obtiene el nombre completo de un paciente
     ''' </summary>
     Public Function GetDataPerson(ByVal DNI As String,
                                   ByRef Name As String) As String
@@ -228,7 +228,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine los datos de todos los pacientes
+    ''' Obtiene los datos de todos los pacientes
     ''' </summary>
     Public Function GetDataPersons(ByVal op As Integer,
                                    ByVal text As String,
@@ -269,7 +269,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el siguiente ID de la tabla Fechas
+    ''' Obtiene el siguiente ID de la tabla Fechas
     ''' </summary>
     Private Function GetIdTableFechas(ByRef cant As Integer) As String
         cError = ""
@@ -302,7 +302,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el ID de la tabla Fechas
+    ''' Obtiene el ID de la tabla Fechas
     ''' </summary>
     Private Function GetIdTableFechas(ByVal DNI As String,
                                       ByVal Fecha As String,
@@ -338,7 +338,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el siguiente ID de la tabla Pacientes Temporales
+    ''' Obtiene el siguiente ID de la tabla Pacientes Temporales
     ''' </summary>
     Private Function GetIdTablePacientesTemporales(ByRef cant As Integer) As String
         cError = ""
@@ -371,7 +371,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el ID del paciente temporal y de la Fecha de la tabla Pacientes Temporales. Realizando un Join con la tabla Fechas y FechaHorario
+    ''' Obtiene el ID del paciente temporal y de la Fecha de la tabla Pacientes Temporales. Realizando un Join con la tabla Fechas y FechaHorario
     ''' </summary>
     Private Function GetIdTablePacientesTemporales(ByRef idF As Integer,
                                                    ByRef idPT As Integer,
@@ -410,7 +410,7 @@ Public Class Conexion_DB
     End Function
 
     ''' <summary>
-    ''' Obtine el listado de turnos de pacientes de una fecha determinada
+    ''' Obtiene el listado de turnos de pacientes de una fecha determinada
     ''' </summary>
     Public Function GetTurnoPersonas(ByVal Fecha As String,
                                      ByRef TurnoP As List(Of Turno),

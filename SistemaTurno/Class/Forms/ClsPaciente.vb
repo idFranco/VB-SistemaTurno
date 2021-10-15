@@ -3,11 +3,13 @@
     Private ReadOnly Frm As Paciente
     Private ReadOnly ClsC As New PCheck
     Private ReadOnly ClsDA As ClsDataAccess
+    Private ReadOnly clsG As ClassGeneral
 
     Public dni_anterior As String
-    Public Sub New(ByVal Frm As Paciente, ByVal ClsDA As ClsDataAccess)
+    Public Sub New(ByVal Frm As Paciente, ByVal ClsDA As ClsDataAccess, ByVal clsG As ClassGeneral)
         Me.Frm = Frm
         Me.ClsDA = ClsDA
+        Me.clsG = clsG
     End Sub
 
     Public Sub LoadData(ByVal Persona As List(Of DataAccess.Persona))
@@ -160,7 +162,6 @@
 
         '****************************************   FECHA DE NACIMIENTO
         If Frm.DTime_fechanac.Visible = True Then
-            Dim clsG As New ClassGeneral
             variable = clsG.Fecha_calendario(Frm.DTime_fechanac.Value.ToString)
         Else
             variable = Frm.TBox_fnacimiento.Text
@@ -345,8 +346,7 @@
     End Function
     Public Sub ConsultaGlobal(frm As Form)
 
-        Dim ClsG As New ClassGeneral
-        ClsG.ConsultaGlobal(frm)
+        clsG.ConsultaGlobal(frm, ClsDA)
 
     End Sub
 

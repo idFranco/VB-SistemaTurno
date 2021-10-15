@@ -1,19 +1,19 @@
-﻿Imports System.Linq
-
+﻿
 Public Class ClsTurno
 
     Private ReadOnly Frm As Turno
     Private ReadOnly ClsC As New TCheck
-    Private ReadOnly clsG As New ClassGeneral
+    Private ReadOnly clsG As ClassGeneral
 
     Private ReadOnly ModelObj As DataAccess.ListaHorario
     Private ReadOnly ClsDA As ClsDataAccess
 
     Private cError As String
 
-    Public Sub New(ByVal Frm As Turno, ByVal ClsDA As ClsDataAccess, ByVal ModObj As DataAccess.ListaHorario)
+    Public Sub New(ByVal Frm As Turno, ByVal ClsDA As ClsDataAccess, ByVal ModObj As DataAccess.ListaHorario, ByVal clsG As ClassGeneral)
         Me.Frm = Frm
         Me.ClsDA = ClsDA
+        Me.clsG = clsG
         Me.ModelObj = ModObj
     End Sub
 
@@ -114,7 +114,7 @@ Public Class ClsTurno
                     If Frm.CBox_dni.Text = "" Or Frm.TBox_apenom.Text = "" Then
 
                         If Not IsNothing(OldDate) Then
-                            'Se actuliza la información
+                            'Se actualiza la información
 
                             If Not Data(0).DNI = "Sin datos" Then If Not ClsC.CheckSelectionItem(Frm.ListView, Data(0).Nombre, Data(0).DNI) Then GoTo salir
 
@@ -261,7 +261,7 @@ salir:
 
             If Not ClsC.CheckItemSelect(Frm) Then GoTo salir
 
-            Dim resultado = MsgBox("¡Se eliminará el turno seleccionada!" & vbNewLine & "¿Desea continuar?", vbOK, "Información")
+            Dim resultado = MsgBox("¡Se eliminará el turno seleccionado!" & vbNewLine & "¿Desea continuar?", vbOK, "Información")
             If resultado <> vbOK Then GoTo salir
 
             Dim LDate = New List(Of DataAccess.HoraFecha)
@@ -317,7 +317,7 @@ salir:
     Public Sub ConsultaGlobal(frm As Form)
 
         Dim ClsG As New ClassGeneral
-        ClsG.ConsultaGlobal(frm)
+        ClsG.ConsultaGlobal(frm, ClsDA)
 
     End Sub
 

@@ -1,16 +1,18 @@
 ﻿Public Class Paciente
 
+    Private ReadOnly clsG As ClassGeneral
     Private ReadOnly ClsPac As ClsPaciente
 
     Private Check As Boolean
 
-    Public Sub New(ByVal ClsDA As ClsDataAccess)
+    Public Sub New(ByVal ClsDA As ClsDataAccess, ByVal clsG As ClassGeneral)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        Me.ClsPac = New ClsPaciente(Me, ClsDA)
+        Me.clsG = clsG
+        Me.ClsPac = New ClsPaciente(Me, ClsDA, clsG)
     End Sub
     Private Sub CBox_dni_TextChanged(sender As Object, e As EventArgs) Handles CBox_dni.TextChanged
 
@@ -52,12 +54,7 @@
 
     Private Sub LoadError(ByVal cError As String)
 
-        If Not IsNothing(cError) And Not cError = "" Then
-            MessageBox.Show(cError)
-            Me.Close()
-            Me.Hide()
-            Return
-        End If
+        If clsG.LoadError(cError) Then UnLoadForm()
 
     End Sub
 
@@ -117,6 +114,10 @@
     End Sub
 
     Private Sub Bot_cerrar_Click(sender As Object, e As EventArgs) Handles Bot_cerrar.Click
+        UnLoadForm()
+    End Sub
+
+    Private Sub UnLoadForm()
         Me.Hide()
         Me.Close()
     End Sub
